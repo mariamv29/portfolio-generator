@@ -30,14 +30,19 @@ const promptUser = () => {
       }
     },
     {
+      type: 'confirm',
+      name: 'confirmAbout',
+      message: 'Would you like to enter some information about yourself for an "About" section?',
+      default: true
+    },
+    {
       type: 'input',
       name: 'about',
       message: 'Provide some information about yourself:',
-      validate: nameInput => {
-        if (nameInput) {
+      when: ({ confirmAbout }) => {
+        if (confirmAbout) {
           return true;
         } else {
-          console.log('Please enter your a validate answer!');
           return false;
         }
       }
